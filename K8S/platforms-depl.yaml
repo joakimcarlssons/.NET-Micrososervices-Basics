@@ -15,5 +15,6 @@ spec:
       containers:
         - name: platformservice
           image: joakimcarlssons/platformservice:latest
+          imagePullPolicy: Always
           ports:
-            - containerPort: 80
+            - containerPort: 5000

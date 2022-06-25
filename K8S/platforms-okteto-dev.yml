@@ -1,0 +1,11 @@
+name: platformservice
+image: joakimcarlssons/platformservice:latest
+environment:
+  - ASPNETCORE_ENVIRONMENT=Development
+command: [ "dotnet", "watch", "run" ]
+workdir: /app
+remote: 2222
+forward:
+  - 5000:5000
+persistentVolume:
+  enabled: false

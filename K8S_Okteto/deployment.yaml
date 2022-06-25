@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: platformservice
+spec:
+  selector:
+    matchLabels:
+      app: platformservice
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: platformservice
+    spec:
+      containers:
+      - name: platformservice
+        image: joakimcarlssons/platformservice:latest
+        ports:
+        - containerPort: 8080

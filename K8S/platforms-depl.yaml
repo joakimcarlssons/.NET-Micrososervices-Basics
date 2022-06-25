@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: platformservice
-          image: joakimcarlssons/platformservice:latest
+          image: okteto.dev/platformservice:latest
           ports:
             - containerPort: 80

@@ -29,13 +29,19 @@ namespace PlatformService.Controllers
 
         #region Endpoints
 
+        [HttpGet("test")]
+        public string Test()
+        {
+            return "Testing";
+        }
+
         [HttpGet]
         public ActionResult<IEnumerable<PlatformReadDto>> GetPlatforms()
         {
             Debug.WriteLine("-> Getting Platforms...");
 
             var platforms = _repository.GetAllPlatforms();
-            return Ok(_mapper.Map<IEnumerable<PlatformReadDto>>(platforms));
+            //return Ok(_mapper.Map<IEnumerable<PlatformReadDto>>(platforms));
         }
 
         [HttpGet("{id}", Name = "GetPlatformById")]

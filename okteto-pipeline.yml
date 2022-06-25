@@ -1,3 +1,6 @@
+build:
+    platformservice:
+        context: PlatformService
 deploy:
   - okteto build -t joakimcarlssons/platformservice:latest
   - kubectl apply -f K8S_Okteto

@@ -11,7 +11,7 @@ RUN dotnet publish  -c Release -o /app
 
 ###############################################################
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:6.0 AS prod
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS prod
 
 WORKDIR /app
 COPY --from=dev /app .

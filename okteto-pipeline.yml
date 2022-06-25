@@ -5,4 +5,3 @@ deploy:
   - kubectl apply -f K8S
 devs:
   - platforms-okteto-dev.yml
-    

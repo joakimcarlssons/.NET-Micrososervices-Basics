@@ -4,5 +4,5 @@ build:
 deploy:
   - kubectl apply -f K8S
 devs:
-  - K8S/platforms-okteto-dev.yml
+  - platforms-okteto-dev.yml
     

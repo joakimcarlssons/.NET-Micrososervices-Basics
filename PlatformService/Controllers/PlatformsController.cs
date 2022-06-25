@@ -32,7 +32,8 @@ namespace PlatformService.Controllers
         [HttpGet("test")]
         public string Test()
         {
-            return "Testing";
+            var test = "hello";
+            return test;
         }
 
         [HttpGet]

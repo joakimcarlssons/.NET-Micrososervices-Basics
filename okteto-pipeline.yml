@@ -1,4 +1,7 @@
+build:
+    platformservice:
+        context: PlatformService
 deploy:
-  - kubectl apply -f k8s.yml
-devs:
-  - okteto.yml
+  - kubectl apply -f K8S
+# devs:
+#   - platforms-okteto-dev.yml

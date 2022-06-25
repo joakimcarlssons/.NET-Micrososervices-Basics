@@ -1,4 +1,6 @@
-﻿namespace PlatformService.Helpers
+﻿using PlatformService.SyncDataServices.Http;
+
+namespace PlatformService.Helpers
 {
     public static class ServiceHelpers
     {
@@ -11,6 +13,7 @@
             builder.Services.AddDbContext<AppDbContext>(opt =>
                 opt.UseInMemoryDatabase("InMem"));
 
+            builder.Services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
             builder.Services.AddScoped<IPlatformRepository, PlatformRepository>();
 
             builder.Services.AddControllers();

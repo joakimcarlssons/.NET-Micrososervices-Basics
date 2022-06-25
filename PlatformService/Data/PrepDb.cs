@@ -17,7 +17,7 @@
             // If we don't have any data...
             if (!context.Platforms.Any())
             {
-                Debug.WriteLine("--> Seeding data...");
+                Console.WriteLine("--> Seeding data...");
 
                 context.Platforms.AddRange(
                     new()
@@ -44,7 +44,7 @@
             }
             else
             {
-                Debug.WriteLine("--> We already have data.");
+                Console.WriteLine("--> We already have data.");
             }
         }
     }

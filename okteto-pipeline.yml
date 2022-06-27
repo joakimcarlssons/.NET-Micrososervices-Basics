@@ -4,7 +4,7 @@ build:
     commandservice:
       context: CommandService
 deploy:
-  - kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/cloud/deploy.yaml # Setting up API gateway with NginX
+  #- kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/cloud/deploy.yaml # Setting up API gateway with NginX
   - kubectl apply -f K8S
 # devs:
 #   - platforms-okteto-dev.yml

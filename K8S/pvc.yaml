@@ -5,7 +5,8 @@ metadata:
   name: mssql-claim
 spec:
   accessModes:
-    - ReadWriteMany
+    #- ReadWriteMany
+    - ReadWriteOnce # The one allowed by Okteto
   resources:
     requests:
       storage: 200Mi

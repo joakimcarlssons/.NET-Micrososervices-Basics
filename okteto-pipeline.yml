@@ -8,6 +8,6 @@ deploy:
   - kubectl apply -f K8S
   - kubectl delete secret mssql
   - kubectl create secret generic mssql --from-literal=SA_PASSWORD="P4ssw0rd" # Only need to run once
-  - kubectl port-forward service/mssql 1433:1433
+  #- kubectl port-forward service/mssql 1433:1433 # Run locally to develop directly towards cloud instance
 # devs:
 #   - platforms-okteto-dev.yml

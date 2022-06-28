@@ -2,18 +2,31 @@
 {
     public static class PrepDb
     {
-        public static void PrepPopulation(IApplicationBuilder app)
+        public static void PrepPopulation(IApplicationBuilder app, bool isProd)
         {
             // Get the service scope in order to use services in static methods
             using var serviceScope = app.ApplicationServices.CreateScope();
 
-            // Seed initial data using the AppDbContext service of the initialized service scope
-            SeedData(serviceScope.ServiceProvider.GetService<AppDbContext>());
+            // Seed initial data using the AppDbContext service of the initialized service scopes
+            SeedData(serviceScope.ServiceProvider.GetService<AppDbContext>(), isProd);
 
         }
 
-        private static void SeedData(AppDbContext context)
+        private static void SeedData(AppDbContext context, bool isProd)
         {
+            if (isProd)
+            {
+                Console.WriteLine("--> Attempting to apply migrations...");
+                try
+                {
+                    context.Database.Migrate();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"--> Could not run migrations: { ex.Message }");
+                }
+            }
+
             // If we don't have any data...
             if (!context.Platforms.Any())
             {

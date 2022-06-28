@@ -10,8 +10,19 @@ namespace PlatformService.Helpers
         /// <param name="builder">The instance where the services are being set up</param>
         public static void ConfigureServices(this WebApplicationBuilder builder)
         {
-            builder.Services.AddDbContext<AppDbContext>(opt =>
-                opt.UseInMemoryDatabase("InMem"));
+            if (builder.Environment.IsProduction())
+            {
+                Console.WriteLine("--> Using SqlServer Db");
+                builder.Services.AddDbContext<AppDbContext>(opt =>  
+                    opt.UseSqlServer(builder.Configuration.GetConnectionString("PlatformsConn")));
+            }
+            else
+            {
+                // Use in memory database if we're not in production
+                Console.WriteLine("--> Using InMem Db");
+                builder.Services.AddDbContext<AppDbContext>(opt =>
+                    opt.UseInMemoryDatabase("InMem"));
+            }
 
             builder.Services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
             builder.Services.AddScoped<IPlatformRepository, PlatformRepository>();

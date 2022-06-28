@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CommandService.Dtos;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CommandService.Controllers
 {
@@ -8,20 +9,32 @@ namespace CommandService.Controllers
     {
         #region Private Members
 
-
+        private readonly ICommandRepo _repository;
+        private readonly IMapper _mapper;
 
         #endregion
 
         #region Contructor
 
-        public PlatformsController()
+        public PlatformsController(ICommandRepo repository, IMapper mapper)
         {
-
+            _repository = repository;
+            _mapper = mapper;
         }
 
         #endregion
 
         #region Endpoints
+
+        [HttpGet]
+        public ActionResult<IEnumerable<PlatformReadDto>> GetPlatforms()
+        {
+            Console.WriteLine("--> Getting platforms from CommandSrvice");
+
+            var platforms = _repository.GetAllPlatforms();
+
+            return Ok(_mapper.Map<IEnumerable<PlatformReadDto>>(platforms));
+        }
 
         [HttpPost]
         public ActionResult TestInboundConnection()

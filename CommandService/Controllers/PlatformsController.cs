@@ -29,7 +29,7 @@ namespace CommandService.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<PlatformReadDto>> GetPlatforms()
         {
-            Console.WriteLine("--> Getting platforms from CommandSrvice");
+            Console.WriteLine("--> Getting platforms from CommandService");
 
             var platforms = _repository.GetAllPlatforms();
 

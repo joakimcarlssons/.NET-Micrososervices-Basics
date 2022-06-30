@@ -1,4 +1,5 @@
-﻿using PlatformService.SyncDataServices.Http;
+﻿using PlatformService.AsyncDataServices;
+using PlatformService.SyncDataServices.Http;
 
 namespace PlatformService.Helpers
 {
@@ -25,6 +26,8 @@ namespace PlatformService.Helpers
             }
 
             builder.Services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
+            builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>();
+
             builder.Services.AddScoped<IPlatformRepository, PlatformRepository>();
 
             builder.Services.AddControllers();

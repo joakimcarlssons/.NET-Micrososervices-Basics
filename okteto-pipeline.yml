@@ -6,8 +6,8 @@ build:
 deploy:
   #- kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/cloud/deploy.yaml # Setting up API gateway (ingress controller) with NginX - Already set up in Okteto
   - kubectl apply -f K8S
-  - kubectl delete secret mssql
-  - kubectl create secret generic mssql --from-literal=SA_PASSWORD="P4ssw0rd" # Only need to run once
+  #- kubectl delete secret mssql
+  #- kubectl create secret generic mssql --from-literal=SA_PASSWORD="P4ssw0rd" # Only need to run once
   #- kubectl port-forward service/mssql 1433:1433 # Run locally to develop directly towards cloud instance
 # devs:
 #   - platforms-okteto-dev.yml

@@ -1,12 +1,10 @@
+using CommandService.AsyncDataServices;
+using CommandService.EventProcessing;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMem"));
-
-builder.Services.AddScoped<ICommandRepo, CommandRepo>();
-
-builder.Services.AddControllers();
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+ConfigureServices(builder.Services);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -28,3 +26,17 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
+void ConfigureServices(IServiceCollection services)
+{
+    services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMem"));
+    services.AddScoped<ICommandRepo, CommandRepo>();
+    services.AddControllers();
+
+    services.AddHostedService<MessageBusSubscriber>();
+
+    services.AddSingleton<IEventProcessor, EventProcessor>();
+
+    services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+}

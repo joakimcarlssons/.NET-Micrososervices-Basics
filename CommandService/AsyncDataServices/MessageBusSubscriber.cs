@@ -49,7 +49,7 @@ namespace CommandService.AsyncDataServices
 
         private void RabbitMQ_ConnectionShutdown(object? sender, ShutdownEventArgs e)
         {
-            Console.WriteLine("--> RabbitMQ Connection Shurdown");
+            Console.WriteLine("--> RabbitMQ Connection Shutdown");
         }
 
         public override void Dispose()

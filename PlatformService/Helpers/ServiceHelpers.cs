@@ -27,6 +27,7 @@ namespace PlatformService.Helpers
 
             builder.Services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
             builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>();
+            builder.Services.AddGrpc();
 
             builder.Services.AddScoped<IPlatformRepository, PlatformRepository>();
 

@@ -1,5 +1,6 @@
 using CommandService.AsyncDataServices;
 using CommandService.EventProcessing;
+using CommandService.SyncDataServices.Grpc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// Prep db before starting the application
+PrepDb.PrepPopulation(app);
 app.Run();
 
 
@@ -39,4 +42,5 @@ void ConfigureServices(IServiceCollection services)
     services.AddSingleton<IEventProcessor, EventProcessor>();
 
     services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+    services.AddScoped<IPlatformDataClient, PlatformDataClient>();
 }

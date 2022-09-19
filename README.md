@@ -1,2 +1,2 @@
-# MicroservicesBaseProj
-Basic setup of microservice architecture using Docker, Kubernetes and Okteto
+# .NET Microservices Basics
+Basic setup of microservice architecture using .NET, RabbitMQ, Docker, Kubernetes and Okteto.
